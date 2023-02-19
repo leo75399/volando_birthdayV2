@@ -18,7 +18,6 @@
     <meta property="og:title" content="" />
     <meta property="og:description" content="" />
     <meta property="og:image" content="" />
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <!-- <meta property="twitter:url" content="https://metatags.io/"> -->
@@ -28,11 +27,10 @@
   </head>
   <body>
     <canvas id="c" width="588" height="944"></canvas>
-    <div class="index_container">
+    <div class="index_container index_container-lock">
       <div class="indexAlert">
         <div class="indexAlert_content">
           <div class="indexAlert_logo"><img src="./img/馥蘭朵logo_c.svg" alt="" /></div>
-
           <div class="indexAlert_icon"><img src="./img/iconmonstr-headphones-16 1.svg" alt="" /></div>
           <p>Dear <span class="indexAlert_name">貴賓</span> 您好</p>
           <p>為確保您的體驗品質，建議您</p>
@@ -42,48 +40,45 @@
         <button id="start" class="alertBox_button">確認</button>
       </div>
       <div class="indexVideo">
-        <div class="indexVideo_videoWrap"><div id="player"></div></div>
-        <div class="indexVideo_logo"><img src="./img/馥蘭朵logo_w.svg" alt="" /></div>
-        <div class="indexVideo_balloon balloon1"><img src="./img/氣球1.png" alt="" /></div>
-        <div class="indexVideo_balloon balloon2"><img src="./img/氣球2.png" alt="" /></div>
-        <div class="indexVideo_balloon balloon3"><img src="./img/氣球3.png" alt="" /></div>
+        <div class="indexVideo_videoWrap opcity-0"><div id="player"></div></div>
+        <div class="indexVideo_logo opcity-0"><img src="./img/馥蘭朵logo_w.svg" alt="" /></div>
+        <div class="indexVideo_balloon balloon1 opcity-0"><img src="./img/氣球1.png" alt="" /></div>
+        <div class="indexVideo_balloon balloon2 opcity-0"><img src="./img/氣球2.png" alt="" /></div>
+        <div class="indexVideo_balloon balloon3 opcity-0"><img src="./img/氣球3.png" alt="" /></div>
       </div>
       <div class="indexMain">
-        <!-- <h2 class="indexMain_bg"><img src="./img/deco.png" alt="" /></h2> -->
-
-        <h2 class="indexMain_dear">Dear</h2>
-        <h1 class="indexMain_name">江俊嶙</h1>
-        <p class="indexMain_p">今日，是屬於你的一天</p>
-        <p class="indexMain_p">
+        <h2 class="indexMain_bg"><img class="indexMain_bg_img opcity-0" src="./img/deco.png" alt="" /></h2>
+        <h2 class="indexMain_dear opcity-0">Dear</h2>
+        <h1 class="indexMain_name opcity-0">貴賓</h1>
+        <p class="indexMain_p indexMain_p1 opcity-0">今日，是屬於你的一天</p>
+        <p class="indexMain_p indexMain_p2 opcity-0">
           當你讀著這封信時， <br />
           台灣藍鵲的啼鳴，<br />
           正迴盪在烏來山林間
         </p>
-        <p class="indexMain_p">
+        <p class="indexMain_p indexMain_p3 opcity-0">
           當你吹蠟燭時， <br />
           海風正熱情擁抱著，<br />
           墾丁沙灘上的每一個人
         </p>
-        <p class="indexMain_p">
+        <p class="indexMain_p indexMain_p4 opcity-0">
           當你入眠時， <br />
           撲滿天空的星辰，<br />
           正和蘭陽平原互道晚安
         </p>
-        <p class="indexMain_p">
+        <p class="indexMain_p indexMain_p5 opcity-0">
           人生如一場旅行，<br />
           而生日便是下一場冒險的起點
         </p>
-        <p class="indexMain_p">願此行，處處美景，歲歲良辰</p>
-      </div>
-      <div class="indexFooter">
-        <div class="indexFooter_logo"><img src="./img/馥蘭朵logo_c.svg" alt="" /></div>
-        <div class="indexFooter_wish">
+        <p class="indexMain_p indexMain_p6 opcity-0">願此行，處處美景，歲歲良辰</p>
+        <div class="indexFooter_logo opcity-0"><img src="./img/馥蘭朵logo_c.svg" alt="" /></div>
+        <div class="indexFooter_wish opcity-0">
           <p class="indexFooter_wishUp"><img src="./img/馥蘭朵 祝您生日快樂.svg" alt="" /></p>
           <p class="indexFooter_wishDown"><img src="./img/Happy Birthday.svg" alt="" /></p>
         </div>
       </div>
     </div>
-
+    <script src="./js/nameList.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>

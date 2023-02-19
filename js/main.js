@@ -1,3 +1,19 @@
+//修改人名
+let params = new URL(window.location.href).searchParams;
+let guestQuery = params.get("guest");
+changeName(guestQuery);
+
+function changeName(params) {
+  if (!!params) {
+    //如果有人名才執行
+    let guestName = jsondata.find((el) => {
+      return params === el.query;
+    });
+    document.querySelector(".indexAlert_name").innerHTML = guestName.name;
+    document.querySelector(".indexMain_name").innerHTML = guestName.name;
+  }
+}
+
 //載入 youtube
 const tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
@@ -12,7 +28,6 @@ function onYouTubeIframeAPIReady() {
     width: "800",
     videoId: "md1tqfsKPOM",
     playerVars: { controls: 0, loop: 1, fs: 0, rel: 0, cc_load_policy: 0 },
-
     events: {
       onReady: onPlayerReady,
     },
@@ -22,8 +37,98 @@ function onPlayerReady(event) {
   event.target.mute();
 }
 
-///點擊動態
+//進場動態
+let indexAlert = document.querySelector(".indexAlert");
+let indexContainer = document.querySelector(".index_container");
+let indexMainBgImg = document.querySelector(".indexMain_bg_img");
+let indexVideoVideoWrap = document.querySelector(".indexVideo_videoWrap");
+let balloon1 = document.querySelector(".balloon1");
+let balloon2 = document.querySelector(".balloon2");
+let balloon3 = document.querySelector(".balloon3");
+let indexMainDear = document.querySelector(".indexMain_dear");
+let indexMainName = document.querySelector(".indexMain_name");
+let indexMainP1 = document.querySelector(".indexMain_p1");
+let indexMainP2 = document.querySelector(".indexMain_p2");
+let indexMainP3 = document.querySelector(".indexMain_p3");
+let indexMainP4 = document.querySelector(".indexMain_p4");
+let indexMainP5 = document.querySelector(".indexMain_p5");
+let indexMainP6 = document.querySelector(".indexMain_p6");
+let indexFooterLogo = document.querySelector(".indexFooter_logo");
+let indexFooterWish = document.querySelector(".indexFooter_wish");
 
+//alert消失，彩帶進場
+document.querySelector("#start").addEventListener("click", (e) => {
+  indexAlert.classList.add("indexAlert-out");
+  indexContainer.classList.remove("index_container-lock");
+  resizeCanvas();
+  indexMainBgImg.classList.add("indexMain_bg_img-big");
+  //彩帶消失，影片進場
+  indexVideoVideoWrap.classList.add("indexVideo_videoWrap-open");
+  player.unMute(); //關閉靜音
+});
+
+//氣球進場 影片播放
+indexVideoVideoWrap.addEventListener("animationend", (e) => {
+  player.playVideo(); //播放
+  balloon1.classList.add("balloon1-open");
+  balloon2.classList.add("balloon2-open");
+  balloon3.classList.add("balloon3-open");
+});
+balloon1.addEventListener("animationend", (e) => {
+  indexMainDear.classList.add("fade_animation");
+});
+indexMainDear.addEventListener("animationend", (e) => {
+  indexMainName.classList.add("fade_animation");
+});
+indexMainName.addEventListener("animationend", (e) => {
+  indexMainP1.classList.add("fade_animation");
+});
+indexMainP1.addEventListener("animationend", (e) => {
+  indexMainP2.classList.add("fade_animation");
+});
+indexMainP2.addEventListener("animationend", (e) => {
+  indexMainP3.classList.add("fade_animation");
+});
+indexMainP3.addEventListener("animationend", (e) => {
+  indexMainP4.classList.add("fade_animation");
+});
+
+//物件滑動才載入
+let windowHeight = window.innerHeight;
+function handleScroll() {
+  var currentScroll = window.scrollY;
+  var p5Position = indexMainP5.offsetTop;
+  var p6Position = indexMainP6.offsetTop;
+  var logoPosition = indexFooterLogo.offsetTop;
+  var wishPosition = indexFooterWish.offsetTop;
+  if (indexAlert.classList.contains("indexAlert-out") && indexMainP4.classList.contains("fade_animation")) {
+    if (currentScroll + windowHeight * 0.85 > p5Position) {
+      indexMainP5.classList.add("fade_animation");
+    }
+    if (currentScroll + windowHeight * 0.85 > p6Position) {
+      indexMainP6.classList.add("fade_animation");
+    }
+    if (currentScroll + windowHeight * 0.85 > logoPosition) {
+      indexFooterLogo.classList.add("fade_animation");
+    }
+    if (currentScroll + windowHeight * 0.85 > wishPosition) {
+      indexFooterWish.classList.add("fade_animation");
+    }
+    if (currentScroll > 1) {
+      balloon1.classList.replace("balloon1-open", "indexVideo_balloon-out");
+      balloon2.classList.replace("balloon2-open", "indexVideo_balloon-out");
+      balloon3.classList.replace("balloon3-open", "indexVideo_balloon-out");
+    } else {
+      balloon1.classList.replace("indexVideo_balloon-out", "balloon1-open");
+      balloon2.classList.replace("indexVideo_balloon-out", "balloon2-open");
+      balloon3.classList.replace("indexVideo_balloon-out", "balloon3-open");
+    }
+  }
+}
+
+window.addEventListener("scroll", handleScroll);
+
+///點擊動態
 var cH,
   cW,
   anime = (function () {
@@ -552,12 +657,16 @@ function addClickListeners() {
 function handleEvent(t) {
   t.preventDefault();
   // t.touches && (t.preventDefault(), (t = t.touches[0]));
+  // console.log(t);
+  // console.log(t.pageX, t.pageY);
+  // console.log(t.screenX, t.screenY);
+
   for (
     var e = colorPicker.current(),
       n = colorPicker.next(),
-      r = calcPageFillRadius(t.pageX, t.pageY),
+      r = calcPageFillRadius(t.pageX, t.clientY),
       a = Math.min(200, 0.4 * cW),
-      i = new Circle({ x: t.pageX, y: t.pageY, r: 0, fill: n }),
+      i = new Circle({ x: t.pageX, y: t.clientY, r: 0, fill: n }),
       o = anime({
         targets: i,
         r: r,
@@ -567,14 +676,14 @@ function handleEvent(t) {
           (bgColor = i.fill), removeAnimation(o);
         },
       }),
-      s = new Circle({ x: t.pageX, y: t.pageY, r: 0, fill: e, stroke: { width: 1, color: e }, opacity: 1 }),
+      s = new Circle({ x: t.pageX, y: t.clientY, r: 0, fill: e, stroke: { width: 1, color: e }, opacity: 1 }),
       u = anime({ targets: s, r: a, opacity: 0, easing: "easeOutExpo", duration: 900, complete: removeAnimation }),
       c = [],
       l = 0;
     l < 32;
     l++
   ) {
-    var f = new Circle({ x: t.pageX, y: t.pageY, fill: e, r: anime.random(24, 48) });
+    var f = new Circle({ x: t.pageX, y: t.clientY, fill: e, r: anime.random(24, 48) });
     c.push(f);
   }
   var d = anime({
@@ -621,7 +730,12 @@ var animate = anime({
     },
   }),
   resizeCanvas = function () {
-    (cW = window.innerWidth), (cH = window.innerHeight), (c.width = cW * devicePixelRatio), (c.height = cH * devicePixelRatio), ctx.scale(devicePixelRatio, devicePixelRatio);
+    (cW = window.innerWidth),
+      // (cH = indexContainer.offsetHeight),
+      (cH = window.innerHeight),
+      (c.width = cW * devicePixelRatio),
+      (c.height = cH * devicePixelRatio),
+      ctx.scale(devicePixelRatio, devicePixelRatio);
   };
 function handleInactiveUser() {
   var t = setTimeout(function () {
@@ -647,3 +761,4 @@ resizeCanvas(),
   addClickListeners(),
   window.location.pathname.match(/fullcpgrid/) && startFauxClicking(),
   handleInactiveUser();
+////
