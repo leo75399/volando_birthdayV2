@@ -15,4 +15,8 @@ let jsondata = [
     name: "江俊嶙",
     query: "main",
   },
+  {
+    name: "閻力瑜",
+    query: "yvette",
+  },
 ];
