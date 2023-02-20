@@ -1,4 +1,10 @@
 //修改人名
+fetch("./nameList.json")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+
 let params = new URL(window.location.href).searchParams;
 let guestQuery = params.get("guest");
 changeName(guestQuery);
