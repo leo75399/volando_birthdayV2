@@ -42,6 +42,7 @@ let indexAlert = document.querySelector(".indexAlert");
 let indexContainer = document.querySelector(".index_container");
 let indexMainBgImg = document.querySelector(".indexMain_bg_img");
 let indexVideoVideoWrap = document.querySelector(".indexVideo_videoWrap");
+let indexVideoLogo = document.querySelector(".indexVideo_logo");
 let balloon1 = document.querySelector(".balloon1");
 let balloon2 = document.querySelector(".balloon2");
 let balloon3 = document.querySelector(".balloon3");
@@ -62,6 +63,7 @@ document.querySelector("#start").addEventListener("click", (e) => {
   indexContainer.classList.remove("index_container-lock");
   resizeCanvas();
   indexMainBgImg.classList.add("indexMain_bg_img-big");
+  indexVideoLogo.classList.add("indexVideo_logo-open");
   //彩帶消失，影片進場
   indexVideoVideoWrap.classList.add("indexVideo_videoWrap-open");
   player.unMute(); //關閉靜音
