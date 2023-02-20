@@ -1,25 +1,29 @@
 //修改人名
-
-// import csvFilePath from "./namelist.csv";
-
-fetch("./namelist.csv")
-  .then((response) => response.text())
-  .then((data) => {
-    // 將讀取到的 csv 字串轉換成陣列或物件
-  })
-  .catch((error) => console.error(error));
-
-import data from "./nameList.json" assert { type: "json" };
-console.log("🚀 ~ file: main.js:3 ~ data", data);
-
 let params = new URL(window.location.href).searchParams;
 let guestQuery = params.get("guest");
-changeName(guestQuery);
+changeName(guestQuery, jsondata);
 
-function changeName(params) {
+// fetch("https://cl-corevalue.phimedia.tv/namelist.csv")
+//   .then((response) => response.text())
+//   .then((data) => {
+//     const rows = data.split("\n");
+//     rows.shift();
+//     let result = rows.map((row) => {
+//       const [name, query, gender] = row.split(",");
+//       return { name, query, gender };
+//     });
+//     return result;
+//   })
+//   .then((data) => {
+//     data = [];
+//     changeName(guestQuery, data);
+//   })
+//   .catch((error) => console.error(error));
+
+function changeName(params, result) {
   if (!!params) {
     //如果有人名才執行
-    let guestName = jsondata.find((el) => {
+    let guestName = result.find((el) => {
       return params === el.query;
     });
     document.querySelector(".indexAlert_name").innerHTML = guestName.name;
