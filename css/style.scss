@@ -147,26 +147,26 @@ canvas {
         }
       }
     }
-    &_logo {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      max-width: 50px;
-      transform: translateX(-50%);
-      &-open {
-        animation: fadein_logo 1s 0.8s ease-out forwards;
-      }
-      @keyframes fadein_logo {
-        0% {
-          opacity: 0;
-          transform: translateX(-50%) translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(-50%) translateY(0px);
-        }
-      }
-    }
+    // &_logo {
+    //   position: absolute;
+    //   top: 20px;
+    //   left: 50%;
+    //   max-width: 50px;
+    //   transform: translateX(-50%);
+    //   &-open {
+    //     animation: fadein_logo 1s 0.8s ease-out forwards;
+    //   }
+    //   @keyframes fadein_logo {
+    //     0% {
+    //       opacity: 0;
+    //       transform: translateX(-50%) translateY(20px);
+    //     }
+    //     100% {
+    //       opacity: 1;
+    //       transform: translateX(-50%) translateY(0px);
+    //     }
+    //   }
+    // }
     &_balloon {
       position: absolute;
       &.balloon1 {
