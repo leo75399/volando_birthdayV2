@@ -6,6 +6,7 @@ let jsondata = [
   {
     name: "賴麒宇",
     query: "becker",
+    gender: "先生",
   },
   {
     name: "羅智華",
@@ -14,5 +15,6 @@ let jsondata = [
   {
     name: "江俊嶙",
     query: "main",
+    gender: "先生",
   },
 ];
