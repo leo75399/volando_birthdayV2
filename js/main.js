@@ -1,9 +1,16 @@
 //修改人名
-fetch("./nameList.json")
-  .then((response) => response.json())
+
+// import csvFilePath from "./namelist.csv";
+
+fetch("./namelist.csv")
+  .then((response) => response.text())
   .then((data) => {
-    console.log(data);
-  });
+    // 將讀取到的 csv 字串轉換成陣列或物件
+  })
+  .catch((error) => console.error(error));
+
+import data from "./nameList.json" assert { type: "json" };
+console.log("🚀 ~ file: main.js:3 ~ data", data);
 
 let params = new URL(window.location.href).searchParams;
 let guestQuery = params.get("guest");
