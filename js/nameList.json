@@ -13,5 +13,10 @@
     "name": "江俊嶙",
     "query": "main",
     "gender": "先生"
+  },
+  {
+    "name": "測試",
+    "query": "hello",
+    "gender": "先生"
   }
 ]
