@@ -10,6 +10,7 @@ function changeName(params) {
       return params === el.query;
     });
     document.querySelector(".indexAlert_name").innerHTML = guestName.name;
+    document.querySelector(".indexAlert_gender").innerHTML = "  " + guestName.gender;
     document.querySelector(".indexMain_name").innerHTML = `${guestName.name}<div class="indexMain_gender">${guestName.gender}</div>`;
     document.querySelector(".indexMain_gender").innerHTML = guestName.gender;
   }
